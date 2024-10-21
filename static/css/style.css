@@ -1,0 +1,13 @@
+.nav-link {
+  color: aliceblue !important;
+}
+
+.nav-link:hover {
+  color: yellow !important;
+  background-color: red;
+  border-radius: 17px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}

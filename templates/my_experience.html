@@ -1,0 +1,81 @@
+{% extends "emp_base.html" %}
+{% block main %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+    <div class="card shadow m-2">
+        <div class="card-body">
+            <a href="{% url 'edit_myexperience' %}" class="btn btn-primary float-right btn-sm">Edit Work Experience</a>
+            <h5 class="p-2 text-danger" style="border-bottom: 2px solid">Your Work Experience</h5>
+            <div class="container-fluid">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>First Company Name</th>
+                        <td>{{ exp.company1name }}</td>
+                    </tr>
+                    <tr>
+                        <th>First Job Designation</th>
+                        <td>{{ exp.company1desig }}</td>
+                    </tr>
+                    <tr>
+                        <th>First Job Salary</th>
+                        <td>{{ exp.company1salary }}</td>
+                    </tr>
+                    <tr>
+                        <th>First Job Duration</th>
+                        <td>{{ exp.company1duration }}</td>
+                    </tr>
+                    <tr>
+                        <th>Second Company Name</th>
+                        <td>{{ exp.company2name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Second Job Designation</th>
+                        <td>{{ exp.company2desig }}</td>
+                    </tr>
+                    <tr>
+                        <th>Second Job Salary</th>
+                        <td>{{ exp.company2salary }}</td>
+                    </tr>
+                    <tr>
+                        <th>Second Job Duration</th>
+                        <td>{{ exp.company2duration }}</td>
+                    </tr>
+                    <tr>
+                        <th>Third Company Name</th>
+                        <td>{{ exp.company3name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Third Job Designation</th>
+                        <td>{{ exp.company3desig }}</td>
+                    </tr>
+                    <tr>
+                        <th>Third Job Salary</th>
+                        <td>{{ exp.company3salary }}</td>
+                    </tr>
+                    <tr>
+                        <th>Third Job Duration</th>
+                        <td>{{ exp.company3duration }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock %}

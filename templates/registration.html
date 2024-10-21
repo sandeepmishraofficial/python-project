@@ -1,0 +1,178 @@
+{% include "header.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Page</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .register-container {
+        margin-top: 5%;
+        max-width: 600px;
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+      .form-control:focus {
+        border-color: #495057;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="register-container mx-auto">
+        <h2 class="text-center mb-4">Create Your Account</h2>
+        <form method="post" name="signup" onsubmit="return checkpassword()">
+          {% csrf_token %}
+
+          <!-- First Name and Last Name in the Same Row -->
+          <div class="mb-3 row">
+            <div class="col">
+              <label for="firstname" class="form-label"
+                ><i class="fas fa-user"></i> First Name</label
+              >
+              <input
+                type="text"
+                name="firstname"
+                class="form-control"
+                id="firstname"
+                placeholder="Enter your first name"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="lastname" class="form-label"
+                ><i class="fas fa-user"></i> Last Name</label
+              >
+              <input
+                type="text"
+                name="lastname"
+                class="form-control"
+                id="lastname"
+                placeholder="Enter your last name"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Employee Code -->
+          <div class="mb-3">
+            <label for="employeecode" class="form-label"
+              ><i class="fas fa-id-badge"></i> Employee Code</label
+            >
+            <input
+              type="text"
+              name="employeecode"
+              class="form-control"
+              id="employeecode"
+              placeholder="Enter your employee code"
+              required
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email" class="form-label"
+              ><i class="fas fa-envelope"></i> Email address</label
+            >
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <!-- Password and Confirm Password in the Same Row -->
+          <div class="mb-3 row">
+            <div class="col">
+              <label for="password" class="form-label"
+                ><i class="fas fa-lock"></i> Password</label
+              >
+              <input
+                type="password"
+                name="pwd"
+                class="form-control"
+                id="password"
+                placeholder="Create a password"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="confirm-password" class="form-label"
+                ><i class="fas fa-lock"></i> Confirm Password</label
+              >
+              <input
+                type="password"
+                name="cpwd"
+                class="form-control"
+                id="confirm-password"
+                placeholder="Re-enter your password"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Sign Up Button -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">
+              <i class="fas fa-user-plus"></i> Sign Up
+            </button>
+          </div>
+
+          <!-- Already have an account? -->
+          <div class="mt-3 text-center">
+            <p>
+              Already have an account?
+              <a href="{% url 'emp_login' %}">Login here</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function checkpassword() {
+        if (document.signup.pwd.value != document.signup.cpwd.value) {
+          alert("Password and Confirm password do not match");
+          document.signup.cpwd.focus();
+          return false;
+        }
+        return true;
+      }
+    </script>
+
+    <!-- Bootstrap 5 JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+{% if error == "no" %}
+<script>
+  alert("Signup Successful");
+  window.location.href = "{% url 'emp_login' %}";
+</script>
+{% endif %} {% if error == "yes" %}
+<script>
+  alert("Something went wrong, please try again.");
+</script>
+{% endif %}

@@ -1,0 +1,94 @@
+{% include "header.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .login-container {
+        margin-top: 5%;
+        max-width: 400px;
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+      .form-control:focus {
+        border-color: #495057;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-container mx-auto">
+        <h2 class="text-center mb-4">Login Page</h2>
+        <form method="post" name="loginForm">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="email" class="form-label">
+              <i class="fas fa-envelope"></i> Email address
+            </label>
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">
+              <i class="fas fa-lock"></i> Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+          </div>
+          <div class="mt-3 text-center">
+            <p>
+              Don't have an account?
+              <a href="{% url 'registration' %}">Sign up here</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+{% if error == "no" %}
+<script>
+  alert("login Successfully👍👍");
+  window.location.href = "{% url 'emp_home' %}";
+</script>
+{% endif %} {% if error == "yes" %}
+<script>
+  alert("Invaild Login Credentials, please try again.");
+</script>
+{% endif %}

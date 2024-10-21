@@ -1,0 +1,100 @@
+{% extends "emp_base.html" %}
+{% block main %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+    <div class="card shadow m-2">
+        <div class="card-body">
+            <a href="{% url 'edit_myeducation' %}" class="btn btn-primary float-right btn-sm">Edit Education Details</a>
+            <h5 class="p-2 text-danger" style="border-bottom: 2px solid">Your Education Details</h5>
+            <div class="container-fluid">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Post Graduation Name</th>
+                        <td>{{ education.coursepg }}</td>
+                    </tr>
+                    <tr>
+                        <th>Post Graduation College Name</th>
+                        <td>{{ education.schoolclgpg }}</td>
+                    </tr>
+                    <tr>
+                        <th>Year Of Passing in PG</th>
+                        <td>{{ education.yearofpassingpg }}</td>
+                    </tr>
+                    <tr>
+                        <th>Percentage in PG</th>
+                        <td>{{ education.percentagepg }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Graduation Course Name</th>
+                        <td>{{ education.coursegra }}</td>
+                    </tr>
+                    <tr>
+                        <th>Graduation College Name</th>
+                        <td>{{ education.schoolclggra }}</td>
+                    </tr>
+                    <tr>
+                        <th>Year Of Passing in Graduation</th>
+                        <td>{{ education.yearofpassinggra }}</td>
+                    </tr>
+                    <tr>
+                        <th>Percentage in Graduation</th>
+                        <td>{{ education.percentagegra }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>SSC Course Name</th>
+                        <td>{{ education.coursessc }}</td>
+                    </tr>
+                    <tr>
+                        <th>SSC School/College Name</th>
+                        <td>{{ education.schoolclgssc }}</td>
+                    </tr>
+                    <tr>
+                        <th>Year Of Passing in SSC</th>
+                        <td>{{ education.yearofpassingssc }}</td>
+                    </tr>
+                    <tr>
+                        <th>Percentage in SSC</th>
+                        <td>{{ education.percentagessc }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>HSC Course Name</th>
+                        <td>{{ education.coursehsc }}</td>
+                    </tr>
+                    <tr>
+                        <th>HSC School/College Name</th>
+                        <td>{{ education.schoolclgsc }}</td>
+                    </tr>
+                    <tr>
+                        <th>Year Of Passing in HSC</th>
+                        <td>{{ education.yearofpassingsc }}</td>
+                    </tr>
+                    <tr>
+                        <th>Percentage in HSC</th>
+                        <td>{{ education.percentagesc }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock %}
