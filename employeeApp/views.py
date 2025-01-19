@@ -21,7 +21,7 @@ def registration(request):
     if request.method == "POST":
         fn = request.POST['firstname']
         ln = request.POST['lastname']
-        ec = request.POST['employeecode']
+        ec = request.POST['emcode']
         em = request.POST['email']
         pwd = request.POST['pwd']
         
@@ -42,16 +42,17 @@ def registration(request):
 def emp_login(request):
     error = ""
     if request.method == 'POST':
-        u = request.POST['email']
-        p = request.POST['password']
-        user = authenticate(username=u,password=p)
+        u = request.POST.get('email')
+        p = request.POST.get('password')
+        print(f"Email: {u}, Password: {p}")  # Debugging print statement
+        user = authenticate(username=u, password=p)
+        print(f"Authenticated User: {user}")  # Debugging print statement
         if user:
-            login(request,user)
+            login(request, user)
             error = "no"
         else:
             error = "yes"
-    return render(request, 'emp_login.html',locals())
-
+    return render(request, 'emp_login.html', {'error': error})
 def emp_home(request):
     if not request.user.is_authenticated:
         return redirect('emp_login')
